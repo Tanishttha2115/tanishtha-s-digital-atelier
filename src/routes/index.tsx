@@ -5,8 +5,6 @@ import {
   Github,
   Linkedin,
   Mail,
-  Instagram,
-  Download,
   ArrowUpRight,
   Sparkles,
   Code2,
@@ -27,6 +25,7 @@ import {
   Star,
   Github as GithubIcon,
   ExternalLink,
+  Terminal,
 } from "lucide-react";
 import heroOrb from "@/assets/hero-orb.jpg";
 import profileImg from "@/assets/profile.jpg";
@@ -73,6 +72,7 @@ function BackgroundFX() {
         }}
       />
       <Stars />
+      <Particles />
     </div>
   );
 }
@@ -90,6 +90,29 @@ function Stars() {
             key={i}
             className="absolute h-[2px] w-[2px] rounded-full bg-white/60 animate-pulse-glow"
             style={{ top: `${top}%`, left: `${left}%`, animationDelay: `${delay}s` }}
+          />
+        );
+      })}
+    </>
+  );
+}
+
+function Particles() {
+  const particles = Array.from({ length: 18 }, (_, i) => i);
+  return (
+    <>
+      {particles.map((i) => {
+        const left = (i * 61) % 100;
+        const size = 3 + (i % 3);
+        const duration = 12 + (i % 6) * 2;
+        const delay = (i % 8) * 0.7;
+        return (
+          <motion.div
+            key={`p-${i}`}
+            className="absolute rounded-full bg-white/40"
+            style={{ left: `${left}%`, width: size, height: size, bottom: -20 }}
+            animate={{ y: [0, -1200], opacity: [0, 0.8, 0] }}
+            transition={{ duration, delay, repeat: Infinity, ease: "linear" }}
           />
         );
       })}
@@ -123,6 +146,7 @@ function Navbar() {
   const [hidden, setHidden] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState<string>("about");
   const lastY = useRef(0);
 
   useEffect(() => {
@@ -131,6 +155,16 @@ function Navbar() {
       setScrolled(y > 20);
       setHidden(y > lastY.current && y > 200);
       lastY.current = y;
+      const sections = NAV_ITEMS.map((n) => n.href.slice(1));
+      for (const id of sections) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        const r = el.getBoundingClientRect();
+        if (r.top <= 120 && r.bottom >= 120) {
+          setActive(id);
+          break;
+        }
+      }
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -144,7 +178,7 @@ function Navbar() {
         scrolled ? "py-3" : "py-5"
       }`}
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6">
+      <div className={`mx-auto flex max-w-6xl items-center justify-between px-6 transition-all ${scrolled ? "" : ""}`}>
         <a href="#top" className="group flex items-center gap-2">
           <motion.div
             whileHover={{ rotate: 180, scale: 1.1 }}
@@ -158,16 +192,29 @@ function Navbar() {
           </span>
         </a>
 
-        <nav className="hidden items-center gap-1 rounded-full glass px-2 py-2 md:flex">
-          {NAV_ITEMS.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="relative rounded-full px-4 py-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
-            >
-              {item.label}
-            </a>
-          ))}
+        <nav className="hidden items-center gap-1 rounded-full glass-strong px-2 py-2 md:flex shadow-[0_8px_40px_-12px_rgba(139,92,246,0.35)]">
+          {NAV_ITEMS.map((item) => {
+            const id = item.href.slice(1);
+            const isActive = active === id;
+            return (
+              <a
+                key={item.href}
+                href={item.href}
+                className={`relative rounded-full px-4 py-1.5 text-sm transition-colors ${
+                  isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                {isActive && (
+                  <motion.span
+                    layoutId="nav-active"
+                    className="absolute inset-0 rounded-full bg-white/10"
+                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                  />
+                )}
+                <span className="relative">{item.label}</span>
+              </a>
+            );
+          })}
         </nav>
 
         <a
@@ -234,29 +281,27 @@ function Hero() {
     >
       <div className="mx-auto grid w-full max-w-6xl gap-12 px-6 md:grid-cols-[1.15fr_1fr] md:items-center">
         <div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="mb-6 inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs text-muted-foreground"
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
-            </span>
-            Available for select collaborations
-          </motion.div>
-
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="font-display text-5xl font-semibold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl"
+            className="font-display text-5xl font-semibold leading-[1.02] tracking-tight sm:text-6xl md:text-7xl"
           >
-            Engineering{" "}
+            Building{" "}
             <span className="text-gradient animate-gradient">intelligent</span>
-            <br /> systems, end to end.
+            <br /> products for the real world.
           </motion.h1>
+
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mt-5 flex h-8 items-center gap-2 font-display text-lg text-muted-foreground sm:text-xl"
+          >
+            <Terminal className="h-4 w-4 text-[color:var(--glow-cyan)]" />
+            <span className="text-foreground/60">I'm a</span>
+            <TypedRoles />
+          </motion.div>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -264,10 +309,11 @@ function Hero() {
             transition={{ duration: 0.8, delay: 0.25 }}
             className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg"
           >
-            I'm <span className="text-foreground">Tanishttha Sehgal</span> — an
-            AI/ML engineer building production-grade computer vision, NLP, and
-            LLM-powered systems with a full-stack React, Flask & FastAPI
-            backbone.
+            <span className="text-foreground">Tanishttha Sehgal</span> — a
+            Computer Engineering student at J.C. Bose University shipping
+            production-grade computer vision, LLM, and full-stack AI systems.
+            I care about model quality, developer ergonomics, and interfaces
+            that feel inevitable.
           </motion.p>
 
           <motion.div
@@ -281,14 +327,14 @@ function Hero() {
               className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-gradient-brand px-6 py-3 text-sm font-semibold text-black transition-transform hover:scale-105"
             >
               <Sparkles className="h-4 w-4" />
-              Explore my work
+              Explore projects
               <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
             </a>
             <a
               href="#contact"
               className="inline-flex items-center gap-2 rounded-full glass px-6 py-3 text-sm font-semibold text-foreground transition-all hover:bg-white/10"
             >
-              <Download className="h-4 w-4" /> Résumé
+              <Mail className="h-4 w-4" /> Contact me
             </a>
           </motion.div>
 
@@ -352,6 +398,48 @@ function Hero() {
         Scroll
       </motion.div>
     </section>
+  );
+}
+
+/* ---------- Typed roles ---------- */
+const ROLES = [
+  "AI Engineer",
+  "Machine Learning Engineer",
+  "Computer Vision Engineer",
+  "Generative AI Developer",
+  "Backend Developer",
+];
+
+function TypedRoles() {
+  const [i, setI] = useState(0);
+  const [text, setText] = useState("");
+  const [deleting, setDeleting] = useState(false);
+
+  useEffect(() => {
+    const full = ROLES[i];
+    const speed = deleting ? 40 : 75;
+    if (!deleting && text === full) {
+      const p = setTimeout(() => setDeleting(true), 1600);
+      return () => clearTimeout(p);
+    }
+    if (deleting && text === "") {
+      setDeleting(false);
+      setI((v) => (v + 1) % ROLES.length);
+      return;
+    }
+    const t = setTimeout(() => {
+      setText((prev) =>
+        deleting ? full.slice(0, prev.length - 1) : full.slice(0, prev.length + 1),
+      );
+    }, speed);
+    return () => clearTimeout(t);
+  }, [text, deleting, i]);
+
+  return (
+    <span className="text-gradient font-semibold">
+      {text}
+      <span className="ml-0.5 inline-block h-5 w-[2px] translate-y-1 animate-pulse bg-[color:var(--glow-purple)]" />
+    </span>
   );
 }
 
@@ -434,17 +522,17 @@ function About() {
         <div className="space-y-6">
           <p className="text-lg leading-relaxed text-muted-foreground">
             I'm a Computer Engineering student at{" "}
-            <span className="text-foreground">J.C. Bose University (YMCA)</span>,
-            focused on machine learning, computer vision, and generative AI. I
-            build end-to-end deep learning systems — from YOLOv8 vision
-            pipelines to LLaMA 3 conversational agents — and deploy them as
-            polished full-stack products.
+            <span className="text-foreground">J.C. Bose University (YMCA)</span>{" "}
+            focused on <span className="text-foreground">AI, Machine Learning,
+            Computer Vision, LLMs and Deep Learning</span>. I build end-to-end
+            systems — from YOLOv8 perception pipelines to LLaMA 3 agents — and
+            ship them as full-stack products.
           </p>
           <p className="text-lg leading-relaxed text-muted-foreground">
-            Beyond code, I serve as Joint Secretary of the University Computer
-            Centre, coordinate placements for the Computer Engineering
-            department, and write poetry that has been featured at the
-            Surajkund International Crafts Mela.
+            I care deeply about problem solving, clean architecture, and
+            interfaces with taste. Outside code, I serve as Joint Secretary of
+            the University Computer Centre and coordinate Training & Placement
+            for the Computer Engineering department.
           </p>
 
           <div className="grid grid-cols-2 gap-4 pt-4">
@@ -468,13 +556,6 @@ function About() {
               </motion.div>
             ))}
           </div>
-
-          <a
-            href="#contact"
-            className="mt-4 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-black transition-transform hover:scale-105"
-          >
-            <Download className="h-4 w-4" /> Download résumé
-          </a>
         </div>
       </div>
     </Section>
@@ -483,15 +564,15 @@ function About() {
 
 /* ---------- Skills ---------- */
 const SKILLS = [
-  { icon: Brain, name: "Generative AI & LLMs", level: 92, tags: ["LLaMA 3", "Groq API", "Prompt Eng."] },
-  { icon: Eye, name: "Computer Vision", level: 93, tags: ["YOLOv8", "OpenCV", "Facial Landmarks"] },
-  { icon: Cpu, name: "Machine Learning", level: 90, tags: ["Scikit-learn", "TF-IDF", "Ensembles"] },
-  { icon: Code2, name: "Frontend", level: 88, tags: ["React.js", "Tailwind", "JavaScript"] },
-  { icon: Layers, name: "Backend & APIs", level: 90, tags: ["Flask", "FastAPI", "REST"] },
-  { icon: Database, name: "Data & Storage", level: 82, tags: ["SQL", "Firebase", "Pandas"] },
+  { icon: Code2, name: "Programming", level: 92, tags: ["Python", "JavaScript", "C++", "SQL"] },
+  { icon: Cpu, name: "AI & ML", level: 90, tags: ["Scikit-learn", "TensorFlow", "PyTorch", "SMOTE"] },
+  { icon: Eye, name: "Computer Vision", level: 93, tags: ["YOLOv8", "OpenCV", "Mediapipe"] },
+  { icon: Brain, name: "LLMs", level: 90, tags: ["LLaMA 3", "Groq API", "Prompt Eng."] },
+  { icon: Sparkles, name: "Frontend", level: 88, tags: ["React.js", "Tailwind", "HTML/CSS"] },
+  { icon: Layers, name: "Backend", level: 90, tags: ["Flask", "FastAPI", "Node.js", "REST"] },
+  { icon: Database, name: "Database", level: 82, tags: ["MySQL", "Firebase", "MongoDB"] },
   { icon: Cloud, name: "Deployment", level: 85, tags: ["Vercel", "Render", "Docker"] },
-  { icon: Rocket, name: "MLOps", level: 80, tags: ["Git", "GitHub Actions", "CI/CD"] },
-  { icon: Sparkles, name: "Design Craft", level: 90, tags: ["Figma", "Motion", "Systems"] },
+  { icon: Rocket, name: "Developer Tools", level: 88, tags: ["Git", "GitHub", "VS Code", "Postman"] },
 ];
 
 function Skills() {
@@ -547,11 +628,21 @@ const PROJECTS = [
   {
     title: "AutiScan",
     category: "Computer Vision",
+    featured: true,
     desc: "End-to-end ASD detection & AI therapy platform. Real-time gaze and motor behavioral analysis via YOLOv8 + OpenCV, paired with a LLaMA 3 (Groq API) conversational therapy assistant.",
     tags: ["YOLOv8", "OpenCV", "LLaMA 3", "Flask", "React.js"],
     gradient: "from-purple-500/40 via-pink-500/30 to-cyan-500/30",
     code: "https://github.com/Tanishttha/AutiScan",
     live: "https://autismbuddy.vercel.app",
+  },
+  {
+    title: "InvoiceGenie",
+    category: "Full Stack",
+    desc: "AI-powered invoice generation platform with polished templates, tax handling, and PDF export. Built for freelancers and small businesses shipping invoices in seconds.",
+    tags: ["React.js", "Node.js", "Tailwind", "PDF"],
+    gradient: "from-emerald-500/40 via-teal-500/30 to-cyan-500/30",
+    code: "https://github.com/Tanishttha/InvoiceGenie",
+    live: "https://invoice-genie-pro.vercel.app",
   },
   {
     title: "Fake Job Posting Detection",
@@ -571,9 +662,27 @@ const PROJECTS = [
     code: "https://github.com/Tanishttha/NavAssist",
     live: "https://navassist.vercel.app",
   },
+  {
+    title: "MysterMaze",
+    category: "Full Stack",
+    desc: "Interactive mystery-solving maze game with animated UI, layered puzzles, and a responsive React interface tuned for smooth gameplay across devices.",
+    tags: ["React.js", "JavaScript", "Tailwind", "Framer Motion"],
+    gradient: "from-fuchsia-500/40 via-purple-500/30 to-indigo-500/30",
+    code: "https://github.com/Tanishttha/mystermaze",
+    live: "https://mystermaze.vercel.app",
+  },
+  {
+    title: "Carpool YMCA",
+    category: "Full Stack",
+    desc: "Campus carpool platform connecting JCBUST students & staff — ride matching, route sharing, and driver/rider auth flows for a greener commute.",
+    tags: ["React.js", "Firebase", "Node.js", "Tailwind"],
+    gradient: "from-sky-500/40 via-blue-500/30 to-emerald-500/30",
+    code: "https://github.com/Tanishttha/Carpool",
+    live: "https://carpool-ymca.vercel.app",
+  },
 ];
 
-const FILTERS = ["All", "AI", "Machine Learning", "Computer Vision"];
+const FILTERS = ["All", "AI", "Machine Learning", "Computer Vision", "Full Stack"];
 
 function Projects() {
   const [filter, setFilter] = useState("All");
@@ -611,24 +720,32 @@ function Projects() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.4, delay: i * 0.05 }}
-              whileHover={{ y: -6 }}
-              className="group relative overflow-hidden rounded-3xl glass"
+              whileHover={{ y: -8 }}
+              className="group relative overflow-hidden rounded-3xl glass transition-shadow hover:shadow-[0_30px_80px_-20px_rgba(139,92,246,0.45)]"
             >
+              <div className="pointer-events-none absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" style={{ background: "linear-gradient(135deg, rgba(139,92,246,0.15), rgba(6,182,212,0.15))" }} />
               <div className={`relative aspect-[16/10] overflow-hidden bg-gradient-to-br ${p.gradient}`}>
                 <div className="absolute inset-0 backdrop-blur-3xl" />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <motion.div
                     animate={{ rotate: 360 }}
                     transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                    className="h-40 w-40 rounded-full border border-white/20"
+                    className="h-44 w-44 rounded-full border border-white/20 transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute h-24 w-24 rounded-full bg-gradient-brand opacity-70 blur-2xl" />
-                  <div className="absolute font-display text-5xl font-bold text-white/90 mix-blend-overlay">
+                  <div className="absolute font-display text-5xl font-bold text-white/90 mix-blend-overlay tracking-tight">
                     {p.title.split(" ")[0]}
                   </div>
                 </div>
-                <div className="absolute left-4 top-4 rounded-full glass px-3 py-1 text-[10px] uppercase tracking-widest">
-                  {p.category}
+                <div className="absolute left-4 top-4 flex gap-2">
+                  <div className="rounded-full glass px-3 py-1 text-[10px] uppercase tracking-widest">
+                    {p.category}
+                  </div>
+                  {p.featured && (
+                    <div className="rounded-full bg-gradient-brand px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-black">
+                      Featured
+                    </div>
+                  )}
                 </div>
               </div>
               <div className="p-6">
@@ -886,7 +1003,6 @@ function Contact() {
       id="contact"
       eyebrow="Contact"
       title={<>Let's build something <span className="text-gradient">extraordinary</span>.</>}
-      subtitle="Available for select engineering, research, and design collaborations."
     >
       <div className="grid gap-10 md:grid-cols-[1fr_1.2fr]">
         <div className="space-y-4">
@@ -894,7 +1010,6 @@ function Contact() {
             { icon: Mail, label: "tanishttha2115@gmail.com", href: "mailto:tanishttha2115@gmail.com" },
             { icon: Linkedin, label: "linkedin.com/in/tanishttha-sehgal", href: "https://linkedin.com/in/tanishttha-sehgal-73555b287" },
             { icon: Github, label: "github.com/Tanishttha", href: "https://github.com/Tanishttha" },
-            { icon: Instagram, label: "Faridabad, India", href: "#" },
           ].map((c) => (
             <a
               key={c.label}
@@ -966,12 +1081,12 @@ function Footer() {
   return (
     <footer className="relative z-10 border-t border-white/5 py-10">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 sm:flex-row">
-        <div className="flex items-center gap-3">
-          <div className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-brand text-xs font-bold text-black">
-            T
-          </div>
-          <span className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Tanishttha Sehgal. Crafted with obsession.
+        <div className="flex flex-col gap-1 text-center sm:text-left">
+          <span className="text-sm text-foreground">
+            Designed & Developed by Tanishttha Sehgal
+          </span>
+          <span className="text-xs text-muted-foreground">
+            Built with React, TanStack Start, Tailwind CSS & Framer Motion.
           </span>
         </div>
         <div className="flex items-center gap-4">
