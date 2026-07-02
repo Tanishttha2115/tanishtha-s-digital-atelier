@@ -483,13 +483,14 @@ function About() {
 
 /* ---------- Skills ---------- */
 const SKILLS = [
-  { icon: Brain, name: "Artificial Intelligence", level: 95, tags: ["LLMs", "RAG", "Agents"] },
-  { icon: Eye, name: "Computer Vision", level: 92, tags: ["OpenCV", "YOLO", "Diffusion"] },
-  { icon: Cpu, name: "Machine Learning", level: 90, tags: ["PyTorch", "TensorFlow", "Sklearn"] },
-  { icon: Code2, name: "Frontend Engineering", level: 94, tags: ["React", "Next.js", "TS"] },
-  { icon: Layers, name: "Backend & APIs", level: 88, tags: ["Node", "Python", "FastAPI"] },
-  { icon: Database, name: "Databases", level: 85, tags: ["Postgres", "Redis", "Vector DBs"] },
-  { icon: Cloud, name: "Cloud & DevOps", level: 82, tags: ["AWS", "Docker", "CI/CD"] },
+  { icon: Brain, name: "Generative AI & LLMs", level: 92, tags: ["LLaMA 3", "Groq API", "Prompt Eng."] },
+  { icon: Eye, name: "Computer Vision", level: 93, tags: ["YOLOv8", "OpenCV", "Facial Landmarks"] },
+  { icon: Cpu, name: "Machine Learning", level: 90, tags: ["Scikit-learn", "TF-IDF", "Ensembles"] },
+  { icon: Code2, name: "Frontend", level: 88, tags: ["React.js", "Tailwind", "JavaScript"] },
+  { icon: Layers, name: "Backend & APIs", level: 90, tags: ["Flask", "FastAPI", "REST"] },
+  { icon: Database, name: "Data & Storage", level: 82, tags: ["SQL", "Firebase", "Pandas"] },
+  { icon: Cloud, name: "Deployment", level: 85, tags: ["Vercel", "Render", "Docker"] },
+  { icon: Rocket, name: "MLOps", level: 80, tags: ["Git", "GitHub Actions", "CI/CD"] },
   { icon: Sparkles, name: "Design Craft", level: 90, tags: ["Figma", "Motion", "Systems"] },
 ];
 
