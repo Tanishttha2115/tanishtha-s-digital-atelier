@@ -434,24 +434,26 @@ function About() {
 
         <div className="space-y-6">
           <p className="text-lg leading-relaxed text-muted-foreground">
-            I build at the intersection of{" "}
-            <span className="text-foreground">artificial intelligence</span>{" "}
-            and product design — shipping tools that feel considered,
-            performant, and quietly magical. My work spans computer vision
-            research, full-stack engineering, and design systems that scale.
+            I'm a Computer Engineering student at{" "}
+            <span className="text-foreground">J.C. Bose University (YMCA)</span>,
+            focused on machine learning, computer vision, and generative AI. I
+            build end-to-end deep learning systems — from YOLOv8 vision
+            pipelines to LLaMA 3 conversational agents — and deploy them as
+            polished full-stack products.
           </p>
           <p className="text-lg leading-relaxed text-muted-foreground">
-            Previously I've contributed to research labs, shipped production
-            ML pipelines, and led teams to podium finishes at international
-            hackathons.
+            Beyond code, I serve as Joint Secretary of the University Computer
+            Centre, coordinate placements for the Computer Engineering
+            department, and write poetry that has been featured at the
+            Surajkund International Crafts Mela.
           </p>
 
           <div className="grid grid-cols-2 gap-4 pt-4">
             {[
-              { icon: GraduationCap, k: "B.Tech CSE", v: "AI Specialization" },
-              { icon: Trophy, k: "12+ Awards", v: "Hackathons & research" },
-              { icon: Briefcase, k: "3 Internships", v: "AI & product teams" },
-              { icon: Star, k: "1500+", v: "GitHub stars" },
+              { icon: GraduationCap, k: "B.Tech CE", v: "JCBUST YMCA · 2027" },
+              { icon: Trophy, k: "6+ Awards", v: "Tech, poetry & speech" },
+              { icon: Briefcase, k: "Joint Secretary", v: "Univ. Computer Centre" },
+              { icon: Star, k: "8.83 CGPA", v: "Top of cohort" },
             ].map((s, i) => (
               <motion.div
                 key={s.k}
