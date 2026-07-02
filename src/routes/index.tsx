@@ -651,13 +651,17 @@ function Projects() {
                 </div>
                 <div className="mt-5 flex gap-3">
                   <a
-                    href="#"
+                    href={p.code}
+                    target="_blank"
+                    rel="noreferrer"
                     className="inline-flex items-center gap-1.5 rounded-full glass px-3 py-1.5 text-xs hover:bg-white/10"
                   >
                     <GithubIcon className="h-3.5 w-3.5" /> Code
                   </a>
                   <a
-                    href="#"
+                    href={p.live}
+                    target="_blank"
+                    rel="noreferrer"
                     className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-xs font-semibold text-black hover:scale-105 transition-transform"
                   >
                     <ExternalLink className="h-3.5 w-3.5" /> Live
