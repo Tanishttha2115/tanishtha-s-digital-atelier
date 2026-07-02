@@ -48,7 +48,6 @@ function Index() {
         <Projects />
         <Experience />
         <Achievements />
-        <Testimonials />
         <Contact />
       </main>
       <Footer />
@@ -254,9 +253,9 @@ function Hero() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="font-display text-5xl font-semibold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl"
           >
-            Building the{" "}
+            Engineering{" "}
             <span className="text-gradient animate-gradient">intelligent</span>
-            <br /> web, pixel by pixel.
+            <br /> systems, end to end.
           </motion.h1>
 
           <motion.p
@@ -265,10 +264,10 @@ function Hero() {
             transition={{ duration: 0.8, delay: 0.25 }}
             className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg"
           >
-            I'm <span className="text-foreground">Tanishttha</span> — an AI &
-            computer vision engineer designing luxurious, high-performance
-            products that blend research-grade machine learning with
-            Apple-caliber craft.
+            I'm <span className="text-foreground">Tanishttha Sehgal</span> — an
+            AI/ML engineer building production-grade computer vision, NLP, and
+            LLM-powered systems with a full-stack React, Flask & FastAPI
+            backbone.
           </motion.p>
 
           <motion.div
@@ -300,9 +299,9 @@ function Hero() {
             className="mt-14 grid grid-cols-3 gap-6 max-w-md"
           >
             {[
-              { k: "5+", v: "Years crafting" },
-              { k: "40+", v: "Shipped projects" },
-              { k: "12", v: "Awards & papers" },
+              { k: "8.83", v: "CGPA / 10" },
+              { k: "3", v: "Deployed AI apps" },
+              { k: "6+", v: "Awards & wins" },
             ].map((s) => (
               <div key={s.v}>
                 <div className="font-display text-2xl font-semibold text-gradient">
@@ -434,24 +433,26 @@ function About() {
 
         <div className="space-y-6">
           <p className="text-lg leading-relaxed text-muted-foreground">
-            I build at the intersection of{" "}
-            <span className="text-foreground">artificial intelligence</span>{" "}
-            and product design — shipping tools that feel considered,
-            performant, and quietly magical. My work spans computer vision
-            research, full-stack engineering, and design systems that scale.
+            I'm a Computer Engineering student at{" "}
+            <span className="text-foreground">J.C. Bose University (YMCA)</span>,
+            focused on machine learning, computer vision, and generative AI. I
+            build end-to-end deep learning systems — from YOLOv8 vision
+            pipelines to LLaMA 3 conversational agents — and deploy them as
+            polished full-stack products.
           </p>
           <p className="text-lg leading-relaxed text-muted-foreground">
-            Previously I've contributed to research labs, shipped production
-            ML pipelines, and led teams to podium finishes at international
-            hackathons.
+            Beyond code, I serve as Joint Secretary of the University Computer
+            Centre, coordinate placements for the Computer Engineering
+            department, and write poetry that has been featured at the
+            Surajkund International Crafts Mela.
           </p>
 
           <div className="grid grid-cols-2 gap-4 pt-4">
             {[
-              { icon: GraduationCap, k: "B.Tech CSE", v: "AI Specialization" },
-              { icon: Trophy, k: "12+ Awards", v: "Hackathons & research" },
-              { icon: Briefcase, k: "3 Internships", v: "AI & product teams" },
-              { icon: Star, k: "1500+", v: "GitHub stars" },
+              { icon: GraduationCap, k: "B.Tech CE", v: "JCBUST YMCA · 2027" },
+              { icon: Trophy, k: "6+ Awards", v: "Tech, poetry & speech" },
+              { icon: Briefcase, k: "Joint Secretary", v: "Univ. Computer Centre" },
+              { icon: Star, k: "8.83 CGPA", v: "Top of cohort" },
             ].map((s, i) => (
               <motion.div
                 key={s.k}
@@ -482,13 +483,14 @@ function About() {
 
 /* ---------- Skills ---------- */
 const SKILLS = [
-  { icon: Brain, name: "Artificial Intelligence", level: 95, tags: ["LLMs", "RAG", "Agents"] },
-  { icon: Eye, name: "Computer Vision", level: 92, tags: ["OpenCV", "YOLO", "Diffusion"] },
-  { icon: Cpu, name: "Machine Learning", level: 90, tags: ["PyTorch", "TensorFlow", "Sklearn"] },
-  { icon: Code2, name: "Frontend Engineering", level: 94, tags: ["React", "Next.js", "TS"] },
-  { icon: Layers, name: "Backend & APIs", level: 88, tags: ["Node", "Python", "FastAPI"] },
-  { icon: Database, name: "Databases", level: 85, tags: ["Postgres", "Redis", "Vector DBs"] },
-  { icon: Cloud, name: "Cloud & DevOps", level: 82, tags: ["AWS", "Docker", "CI/CD"] },
+  { icon: Brain, name: "Generative AI & LLMs", level: 92, tags: ["LLaMA 3", "Groq API", "Prompt Eng."] },
+  { icon: Eye, name: "Computer Vision", level: 93, tags: ["YOLOv8", "OpenCV", "Facial Landmarks"] },
+  { icon: Cpu, name: "Machine Learning", level: 90, tags: ["Scikit-learn", "TF-IDF", "Ensembles"] },
+  { icon: Code2, name: "Frontend", level: 88, tags: ["React.js", "Tailwind", "JavaScript"] },
+  { icon: Layers, name: "Backend & APIs", level: 90, tags: ["Flask", "FastAPI", "REST"] },
+  { icon: Database, name: "Data & Storage", level: 82, tags: ["SQL", "Firebase", "Pandas"] },
+  { icon: Cloud, name: "Deployment", level: 85, tags: ["Vercel", "Render", "Docker"] },
+  { icon: Rocket, name: "MLOps", level: 80, tags: ["Git", "GitHub Actions", "CI/CD"] },
   { icon: Sparkles, name: "Design Craft", level: 90, tags: ["Figma", "Motion", "Systems"] },
 ];
 
@@ -543,50 +545,35 @@ function Skills() {
 /* ---------- Projects ---------- */
 const PROJECTS = [
   {
-    title: "Aurora Vision",
-    category: "AI",
-    desc: "Real-time multimodal assistant blending vision, voice, and reasoning for creative workflows.",
-    tags: ["Next.js", "PyTorch", "WebRTC"],
-    gradient: "from-purple-500/40 via-pink-500/30 to-cyan-500/30",
-  },
-  {
-    title: "Prism CV",
+    title: "AutiScan",
     category: "Computer Vision",
-    desc: "Edge-optimized object detection pipeline running 60fps on-device with sub-2% error.",
-    tags: ["PyTorch", "ONNX", "Rust"],
-    gradient: "from-cyan-500/40 via-blue-500/30 to-indigo-500/30",
+    desc: "End-to-end ASD detection & AI therapy platform. Real-time gaze and motor behavioral analysis via YOLOv8 + OpenCV, paired with a LLaMA 3 (Groq API) conversational therapy assistant.",
+    tags: ["YOLOv8", "OpenCV", "LLaMA 3", "Flask", "React.js"],
+    gradient: "from-purple-500/40 via-pink-500/30 to-cyan-500/30",
+    code: "https://github.com/Tanishttha/AutiScan",
+    live: "https://autismbuddy.vercel.app",
   },
   {
-    title: "Lumen Studio",
-    category: "Web",
-    desc: "Design-forward marketing site with award-winning motion and 99 Lighthouse score.",
-    tags: ["Next.js", "GSAP", "Three.js"],
-    gradient: "from-amber-500/30 via-rose-500/30 to-purple-500/30",
-  },
-  {
-    title: "Nebula ML",
+    title: "Fake Job Posting Detection",
     category: "Machine Learning",
-    desc: "Distributed training platform reducing model iteration time by 4x for research teams.",
-    tags: ["Ray", "Kubernetes", "S3"],
-    gradient: "from-indigo-500/40 via-purple-500/30 to-fuchsia-500/30",
+    desc: "Multi-class job fraud classifier trained on the EMSCAD dataset (17,880+ postings). TF-IDF + ensemble learning with SMOTE balancing, achieving 90%+ F1, served via a Flask inference API.",
+    tags: ["Scikit-learn", "TF-IDF", "Random Forest", "SMOTE", "Flask"],
+    gradient: "from-cyan-500/40 via-blue-500/30 to-indigo-500/30",
+    code: "https://github.com/Tanishttha/fake-job-detection",
+    live: "https://fake-jobdetect.vercel.app",
   },
   {
-    title: "Signal Papers",
-    category: "Research",
-    desc: "Novel attention mechanism for temporal signal classification. Published at NeurIPS workshop.",
-    tags: ["Research", "PyTorch", "LaTeX"],
-    gradient: "from-emerald-500/30 via-teal-500/30 to-cyan-500/30",
-  },
-  {
-    title: "Orbit Analytics",
-    category: "Web",
-    desc: "Realtime product analytics dashboard powering decisions for 200+ SaaS teams.",
-    tags: ["React", "ClickHouse", "tRPC"],
-    gradient: "from-blue-500/30 via-cyan-500/30 to-teal-500/30",
+    title: "NavAssist",
+    category: "AI",
+    desc: "Voice-first navigation assistant for visually impaired users. Web Speech API + ML intent classification + Flask REST APIs, with Firebase auth and WCAG 2.1-compliant UX.",
+    tags: ["Flask", "Firebase", "Web Speech API", "ML", "REST"],
+    gradient: "from-amber-500/30 via-rose-500/30 to-purple-500/30",
+    code: "https://github.com/Tanishttha/NavAssist",
+    live: "https://navassist.vercel.app",
   },
 ];
 
-const FILTERS = ["All", "AI", "Web", "Machine Learning", "Computer Vision", "Research"];
+const FILTERS = ["All", "AI", "Machine Learning", "Computer Vision"];
 
 function Projects() {
   const [filter, setFilter] = useState("All");
@@ -664,13 +651,17 @@ function Projects() {
                 </div>
                 <div className="mt-5 flex gap-3">
                   <a
-                    href="#"
+                    href={p.code}
+                    target="_blank"
+                    rel="noreferrer"
                     className="inline-flex items-center gap-1.5 rounded-full glass px-3 py-1.5 text-xs hover:bg-white/10"
                   >
                     <GithubIcon className="h-3.5 w-3.5" /> Code
                   </a>
                   <a
-                    href="#"
+                    href={p.live}
+                    target="_blank"
+                    rel="noreferrer"
                     className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-xs font-semibold text-black hover:scale-105 transition-transform"
                   >
                     <ExternalLink className="h-3.5 w-3.5" /> Live
@@ -688,32 +679,32 @@ function Projects() {
 /* ---------- Experience Timeline ---------- */
 const TIMELINE = [
   {
-    kind: "Work",
+    kind: "Leadership",
     icon: Briefcase,
-    date: "2024 — Present",
-    title: "AI Engineer · Aurora Labs",
-    body: "Leading multimodal research and shipping production LLM tooling used by 50k+ creators.",
+    date: "Sep 2025 — Present",
+    title: "Computer Dept. Coordinator · Training & Placement Cell (Udaan)",
+    body: "Coordinating campus recruitment with 20+ industry partners and delivering DSA, ML, and web dev workshops for junior cohorts.",
   },
   {
-    kind: "Hackathon",
-    icon: Trophy,
-    date: "2024",
-    title: "1st place · Global AI Hack",
-    body: "Won grand prize among 800 teams for a real-time computer vision assistant.",
-  },
-  {
-    kind: "Internship",
+    kind: "Leadership",
     icon: Rocket,
-    date: "2023",
-    title: "ML Research Intern · Prism AI",
-    body: "Published a novel attention mechanism accepted at a NeurIPS workshop.",
+    date: "Jul 2025 — Present",
+    title: "Joint Secretary · University Computer Centre & Digital Affairs",
+    body: "Directing digital infrastructure for a 5,000-student university — server maintenance, deployments, and modernization of university-wide tooling.",
+  },
+  {
+    kind: "Recognition",
+    icon: Trophy,
+    date: "2025",
+    title: "Featured Speaker · Surajkund International Crafts Mela",
+    body: "Presented original poetry at India's flagship international crafts festival, alongside multiple university-level 1st place wins in literary competitions.",
   },
   {
     kind: "Education",
     icon: GraduationCap,
-    date: "2021 — 2025",
-    title: "B.Tech Computer Science · AI Track",
-    body: "Graduated top of class with distinctions in ML, systems, and human-computer interaction.",
+    date: "2023 — 2027",
+    title: "B.Tech Computer Engineering · JCBUST YMCA",
+    body: "CGPA 8.83/10. Coursework in ML, Intelligent Systems, Computer Vision, Data Mining, Soft Computing, and DSA.",
   },
 ];
 
@@ -759,12 +750,12 @@ function Experience() {
 
 /* ---------- Achievements ---------- */
 const ACHIEVEMENTS = [
-  { icon: Trophy, title: "Global AI Hack — 1st", sub: "800 teams · 2024" },
-  { icon: Award, title: "NeurIPS Workshop Paper", sub: "Accepted · 2023" },
-  { icon: Star, title: "GitHub Arctic Vault", sub: "Contributor" },
-  { icon: Sparkles, title: "Awwwards Honoree", sub: "Site of the Day" },
-  { icon: Trophy, title: "Smart India Hackathon", sub: "Winner · 2023" },
-  { icon: Award, title: "Google DSC Lead", sub: "2022 — 2023" },
+  { icon: Trophy, title: "1st · Tech & Ties", sub: "SPANDAN, Electronics Dept., JCBUST" },
+  { icon: Trophy, title: "1st · India Inked", sub: "University Poetry Competition" },
+  { icon: Sparkles, title: "Featured Speaker", sub: "Surajkund Int'l Crafts Mela 2025" },
+  { icon: Award, title: "State Finalist", sub: "National Environment Youth Parliament 2025" },
+  { icon: Award, title: "2nd · Humara Sanvidhan", sub: "University Speech Competition" },
+  { icon: Star, title: "3rd Runner-Up", sub: "Vigilance Awareness Week Speech" },
 ];
 
 function Achievements() {
@@ -900,10 +891,10 @@ function Contact() {
       <div className="grid gap-10 md:grid-cols-[1fr_1.2fr]">
         <div className="space-y-4">
           {[
-            { icon: Mail, label: "hello@tanishttha.dev", href: "mailto:hello@tanishttha.dev" },
-            { icon: Linkedin, label: "linkedin.com/in/tanishttha", href: "#" },
-            { icon: Github, label: "github.com/tanishttha", href: "#" },
-            { icon: Instagram, label: "@tanishttha.designs", href: "#" },
+            { icon: Mail, label: "tanishttha2115@gmail.com", href: "mailto:tanishttha2115@gmail.com" },
+            { icon: Linkedin, label: "linkedin.com/in/tanishttha-sehgal", href: "https://linkedin.com/in/tanishttha-sehgal-73555b287" },
+            { icon: Github, label: "github.com/Tanishttha", href: "https://github.com/Tanishttha" },
+            { icon: Instagram, label: "Faridabad, India", href: "#" },
           ].map((c) => (
             <a
               key={c.label}
@@ -980,14 +971,20 @@ function Footer() {
             T
           </div>
           <span className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Tanishtha. Crafted with obsession.
+            © {new Date().getFullYear()} Tanishttha Sehgal. Crafted with obsession.
           </span>
         </div>
         <div className="flex items-center gap-4">
-          {[Github, Linkedin, Mail, Instagram].map((Icon, i) => (
+          {[
+            { Icon: Github, href: "https://github.com/Tanishttha" },
+            { Icon: Linkedin, href: "https://linkedin.com/in/tanishttha-sehgal-73555b287" },
+            { Icon: Mail, href: "mailto:tanishttha2115@gmail.com" },
+          ].map(({ Icon, href }, i) => (
             <a
               key={i}
-              href="#"
+              href={href}
+              target="_blank"
+              rel="noreferrer"
               className="text-muted-foreground transition-colors hover:text-foreground"
               aria-label="social link"
             >
