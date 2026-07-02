@@ -155,7 +155,7 @@ function Navbar() {
             T
           </motion.div>
           <span className="font-display text-sm font-semibold tracking-wide">
-            Tanishtha
+            Tanishttha
           </span>
         </a>
 
@@ -265,7 +265,7 @@ function Hero() {
             transition={{ duration: 0.8, delay: 0.25 }}
             className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg"
           >
-            I'm <span className="text-foreground">Tanishtha</span> — an AI &
+            I'm <span className="text-foreground">Tanishttha</span> — an AI &
             computer vision engineer designing luxurious, high-performance
             products that blend research-grade machine learning with
             Apple-caliber craft.
@@ -327,7 +327,7 @@ function Hero() {
           <div className="animate-float relative h-full w-full">
             <img
               src={heroOrb}
-              alt="Iridescent glass orb representing Tanishtha's creative work"
+              alt="Iridescent glass orb representing Tanishttha's creative work"
               width={1024}
               height={1024}
               className="h-full w-full object-contain drop-shadow-[0_0_60px_rgba(139,92,246,0.5)]"
@@ -422,7 +422,7 @@ function About() {
           <div className="relative h-full w-full overflow-hidden rounded-3xl border border-white/10">
             <img
               src={profileImg}
-              alt="Portrait of Tanishtha"
+              alt="Portrait of Tanishttha"
               loading="lazy"
               width={768}
               height={960}
@@ -805,7 +805,7 @@ const TESTIMONIALS = [
     name: "Ananya R.",
     role: "CTO, Aurora Labs",
     quote:
-      "Tanishtha ships work that feels effortless yet is technically deep. Rare combination.",
+      "Tanishttha ships work that feels effortless yet is technically deep. Rare combination.",
   },
   {
     name: "Marco V.",
@@ -900,10 +900,10 @@ function Contact() {
       <div className="grid gap-10 md:grid-cols-[1fr_1.2fr]">
         <div className="space-y-4">
           {[
-            { icon: Mail, label: "hello@tanishtha.dev", href: "mailto:hello@tanishtha.dev" },
-            { icon: Linkedin, label: "linkedin.com/in/tanishtha", href: "#" },
-            { icon: Github, label: "github.com/tanishtha", href: "#" },
-            { icon: Instagram, label: "@tanishtha.designs", href: "#" },
+            { icon: Mail, label: "hello@tanishttha.dev", href: "mailto:hello@tanishttha.dev" },
+            { icon: Linkedin, label: "linkedin.com/in/tanishttha", href: "#" },
+            { icon: Github, label: "github.com/tanishttha", href: "#" },
+            { icon: Instagram, label: "@tanishttha.designs", href: "#" },
           ].map((c) => (
             <a
               key={c.label}
