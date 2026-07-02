@@ -750,12 +750,12 @@ function Experience() {
 
 /* ---------- Achievements ---------- */
 const ACHIEVEMENTS = [
-  { icon: Trophy, title: "Global AI Hack — 1st", sub: "800 teams · 2024" },
-  { icon: Award, title: "NeurIPS Workshop Paper", sub: "Accepted · 2023" },
-  { icon: Star, title: "GitHub Arctic Vault", sub: "Contributor" },
-  { icon: Sparkles, title: "Awwwards Honoree", sub: "Site of the Day" },
-  { icon: Trophy, title: "Smart India Hackathon", sub: "Winner · 2023" },
-  { icon: Award, title: "Google DSC Lead", sub: "2022 — 2023" },
+  { icon: Trophy, title: "1st · Tech & Ties", sub: "SPANDAN, Electronics Dept., JCBUST" },
+  { icon: Trophy, title: "1st · India Inked", sub: "University Poetry Competition" },
+  { icon: Sparkles, title: "Featured Speaker", sub: "Surajkund Int'l Crafts Mela 2025" },
+  { icon: Award, title: "State Finalist", sub: "National Environment Youth Parliament 2025" },
+  { icon: Award, title: "2nd · Humara Sanvidhan", sub: "University Speech Competition" },
+  { icon: Star, title: "3rd Runner-Up", sub: "Vigilance Awareness Week Speech" },
 ];
 
 function Achievements() {
