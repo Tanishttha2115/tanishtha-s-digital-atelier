@@ -679,32 +679,32 @@ function Projects() {
 /* ---------- Experience Timeline ---------- */
 const TIMELINE = [
   {
-    kind: "Work",
+    kind: "Leadership",
     icon: Briefcase,
-    date: "2024 — Present",
-    title: "AI Engineer · Aurora Labs",
-    body: "Leading multimodal research and shipping production LLM tooling used by 50k+ creators.",
+    date: "Sep 2025 — Present",
+    title: "Computer Dept. Coordinator · Training & Placement Cell (Udaan)",
+    body: "Coordinating campus recruitment with 20+ industry partners and delivering DSA, ML, and web dev workshops for junior cohorts.",
   },
   {
-    kind: "Hackathon",
-    icon: Trophy,
-    date: "2024",
-    title: "1st place · Global AI Hack",
-    body: "Won grand prize among 800 teams for a real-time computer vision assistant.",
-  },
-  {
-    kind: "Internship",
+    kind: "Leadership",
     icon: Rocket,
-    date: "2023",
-    title: "ML Research Intern · Prism AI",
-    body: "Published a novel attention mechanism accepted at a NeurIPS workshop.",
+    date: "Jul 2025 — Present",
+    title: "Joint Secretary · University Computer Centre & Digital Affairs",
+    body: "Directing digital infrastructure for a 5,000-student university — server maintenance, deployments, and modernization of university-wide tooling.",
+  },
+  {
+    kind: "Recognition",
+    icon: Trophy,
+    date: "2025",
+    title: "Featured Speaker · Surajkund International Crafts Mela",
+    body: "Presented original poetry at India's flagship international crafts festival, alongside multiple university-level 1st place wins in literary competitions.",
   },
   {
     kind: "Education",
     icon: GraduationCap,
-    date: "2021 — 2025",
-    title: "B.Tech Computer Science · AI Track",
-    body: "Graduated top of class with distinctions in ML, systems, and human-computer interaction.",
+    date: "2023 — 2027",
+    title: "B.Tech Computer Engineering · JCBUST YMCA",
+    body: "CGPA 8.83/10. Coursework in ML, Intelligent Systems, Computer Vision, Data Mining, Soft Computing, and DSA.",
   },
 ];
 
