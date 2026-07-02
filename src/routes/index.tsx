@@ -970,14 +970,20 @@ function Footer() {
             T
           </div>
           <span className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Tanishtha. Crafted with obsession.
+            © {new Date().getFullYear()} Tanishttha Sehgal. Crafted with obsession.
           </span>
         </div>
         <div className="flex items-center gap-4">
-          {[Github, Linkedin, Mail, Instagram].map((Icon, i) => (
+          {[
+            { Icon: Github, href: "https://github.com/Tanishttha" },
+            { Icon: Linkedin, href: "https://linkedin.com/in/tanishttha-sehgal-73555b287" },
+            { Icon: Mail, href: "mailto:tanishttha2115@gmail.com" },
+          ].map(({ Icon, href }, i) => (
             <a
               key={i}
-              href="#"
+              href={href}
+              target="_blank"
+              rel="noreferrer"
               className="text-muted-foreground transition-colors hover:text-foreground"
               aria-label="social link"
             >
