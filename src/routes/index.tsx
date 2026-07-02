@@ -890,10 +890,10 @@ function Contact() {
       <div className="grid gap-10 md:grid-cols-[1fr_1.2fr]">
         <div className="space-y-4">
           {[
-            { icon: Mail, label: "hello@tanishttha.dev", href: "mailto:hello@tanishttha.dev" },
-            { icon: Linkedin, label: "linkedin.com/in/tanishttha", href: "#" },
-            { icon: Github, label: "github.com/tanishttha", href: "#" },
-            { icon: Instagram, label: "@tanishttha.designs", href: "#" },
+            { icon: Mail, label: "tanishttha2115@gmail.com", href: "mailto:tanishttha2115@gmail.com" },
+            { icon: Linkedin, label: "linkedin.com/in/tanishttha-sehgal", href: "https://linkedin.com/in/tanishttha-sehgal-73555b287" },
+            { icon: Github, label: "github.com/Tanishttha", href: "https://github.com/Tanishttha" },
+            { icon: Instagram, label: "Faridabad, India", href: "#" },
           ].map((c) => (
             <a
               key={c.label}
