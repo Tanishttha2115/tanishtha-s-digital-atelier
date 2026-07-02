@@ -155,7 +155,7 @@ function Navbar() {
             T
           </motion.div>
           <span className="font-display text-sm font-semibold tracking-wide">
-            Tanishtha
+            Tanishttha
           </span>
         </a>
 
@@ -265,7 +265,7 @@ function Hero() {
             transition={{ duration: 0.8, delay: 0.25 }}
             className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg"
           >
-            I'm <span className="text-foreground">Tanishtha</span> — an AI &
+            I'm <span className="text-foreground">Tanishttha</span> — an AI &
             computer vision engineer designing luxurious, high-performance
             products that blend research-grade machine learning with
             Apple-caliber craft.
