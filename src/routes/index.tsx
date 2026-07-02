@@ -254,9 +254,9 @@ function Hero() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="font-display text-5xl font-semibold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl"
           >
-            Building the{" "}
+            Engineering{" "}
             <span className="text-gradient animate-gradient">intelligent</span>
-            <br /> web, pixel by pixel.
+            <br /> systems, end to end.
           </motion.h1>
 
           <motion.p
@@ -265,10 +265,10 @@ function Hero() {
             transition={{ duration: 0.8, delay: 0.25 }}
             className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg"
           >
-            I'm <span className="text-foreground">Tanishttha</span> — an AI &
-            computer vision engineer designing luxurious, high-performance
-            products that blend research-grade machine learning with
-            Apple-caliber craft.
+            I'm <span className="text-foreground">Tanishttha Sehgal</span> — an
+            AI/ML engineer building production-grade computer vision, NLP, and
+            LLM-powered systems with a full-stack React, Flask & FastAPI
+            backbone.
           </motion.p>
 
           <motion.div
@@ -300,9 +300,9 @@ function Hero() {
             className="mt-14 grid grid-cols-3 gap-6 max-w-md"
           >
             {[
-              { k: "5+", v: "Years crafting" },
-              { k: "40+", v: "Shipped projects" },
-              { k: "12", v: "Awards & papers" },
+              { k: "8.83", v: "CGPA / 10" },
+              { k: "3", v: "Deployed AI apps" },
+              { k: "6+", v: "Awards & wins" },
             ].map((s) => (
               <div key={s.v}>
                 <div className="font-display text-2xl font-semibold text-gradient">
