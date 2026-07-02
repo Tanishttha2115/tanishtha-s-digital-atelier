@@ -48,7 +48,6 @@ function Index() {
         <Projects />
         <Experience />
         <Achievements />
-        <Testimonials />
         <Contact />
       </main>
       <Footer />
