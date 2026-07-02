@@ -545,50 +545,35 @@ function Skills() {
 /* ---------- Projects ---------- */
 const PROJECTS = [
   {
-    title: "Aurora Vision",
-    category: "AI",
-    desc: "Real-time multimodal assistant blending vision, voice, and reasoning for creative workflows.",
-    tags: ["Next.js", "PyTorch", "WebRTC"],
-    gradient: "from-purple-500/40 via-pink-500/30 to-cyan-500/30",
-  },
-  {
-    title: "Prism CV",
+    title: "AutiScan",
     category: "Computer Vision",
-    desc: "Edge-optimized object detection pipeline running 60fps on-device with sub-2% error.",
-    tags: ["PyTorch", "ONNX", "Rust"],
-    gradient: "from-cyan-500/40 via-blue-500/30 to-indigo-500/30",
+    desc: "End-to-end ASD detection & AI therapy platform. Real-time gaze and motor behavioral analysis via YOLOv8 + OpenCV, paired with a LLaMA 3 (Groq API) conversational therapy assistant.",
+    tags: ["YOLOv8", "OpenCV", "LLaMA 3", "Flask", "React.js"],
+    gradient: "from-purple-500/40 via-pink-500/30 to-cyan-500/30",
+    code: "https://github.com/Tanishttha/AutiScan",
+    live: "https://autismbuddy.vercel.app",
   },
   {
-    title: "Lumen Studio",
-    category: "Web",
-    desc: "Design-forward marketing site with award-winning motion and 99 Lighthouse score.",
-    tags: ["Next.js", "GSAP", "Three.js"],
-    gradient: "from-amber-500/30 via-rose-500/30 to-purple-500/30",
-  },
-  {
-    title: "Nebula ML",
+    title: "Fake Job Posting Detection",
     category: "Machine Learning",
-    desc: "Distributed training platform reducing model iteration time by 4x for research teams.",
-    tags: ["Ray", "Kubernetes", "S3"],
-    gradient: "from-indigo-500/40 via-purple-500/30 to-fuchsia-500/30",
+    desc: "Multi-class job fraud classifier trained on the EMSCAD dataset (17,880+ postings). TF-IDF + ensemble learning with SMOTE balancing, achieving 90%+ F1, served via a Flask inference API.",
+    tags: ["Scikit-learn", "TF-IDF", "Random Forest", "SMOTE", "Flask"],
+    gradient: "from-cyan-500/40 via-blue-500/30 to-indigo-500/30",
+    code: "https://github.com/Tanishttha/fake-job-detection",
+    live: "https://fake-jobdetect.vercel.app",
   },
   {
-    title: "Signal Papers",
-    category: "Research",
-    desc: "Novel attention mechanism for temporal signal classification. Published at NeurIPS workshop.",
-    tags: ["Research", "PyTorch", "LaTeX"],
-    gradient: "from-emerald-500/30 via-teal-500/30 to-cyan-500/30",
-  },
-  {
-    title: "Orbit Analytics",
-    category: "Web",
-    desc: "Realtime product analytics dashboard powering decisions for 200+ SaaS teams.",
-    tags: ["React", "ClickHouse", "tRPC"],
-    gradient: "from-blue-500/30 via-cyan-500/30 to-teal-500/30",
+    title: "NavAssist",
+    category: "AI",
+    desc: "Voice-first navigation assistant for visually impaired users. Web Speech API + ML intent classification + Flask REST APIs, with Firebase auth and WCAG 2.1-compliant UX.",
+    tags: ["Flask", "Firebase", "Web Speech API", "ML", "REST"],
+    gradient: "from-amber-500/30 via-rose-500/30 to-purple-500/30",
+    code: "https://github.com/Tanishttha/NavAssist",
+    live: "https://navassist.vercel.app",
   },
 ];
 
-const FILTERS = ["All", "AI", "Web", "Machine Learning", "Computer Vision", "Research"];
+const FILTERS = ["All", "AI", "Machine Learning", "Computer Vision"];
 
 function Projects() {
   const [filter, setFilter] = useState("All");
