@@ -532,7 +532,7 @@ function About() {
           </p>
           <p className="text-lg leading-relaxed text-muted-foreground">
             I care deeply about problem solving, clean architecture, and
-            interfaces with taste. Outside code, I serve as Joint Secretary of
+            interfaces with taste. Outside code, I serve as Secretary of
             the University Computer Centre and coordinate Training & Placement
             for the Computer Engineering department.
           </p>
@@ -541,7 +541,7 @@ function About() {
             {[
               { icon: GraduationCap, k: "B.Tech CE", v: "JCBUST YMCA · 2027" },
               { icon: Trophy, k: "6+ Awards", v: "Tech, poetry & speech" },
-              { icon: Briefcase, k: "Joint Secretary", v: "Univ. Computer Centre" },
+              { icon: Briefcase, k: "Secretary", v: "University Computer Centre" },
               { icon: Star, k: "8.82 CGPA", v: "Top of cohort" },
             ].map((s, i) => (
               <motion.div
@@ -798,7 +798,7 @@ const TIMELINE = [
     kind: "Leadership",
     icon: Rocket,
     date: "Jul 2025 — Present",
-    title: "Joint Secretary · University Computer Centre & Digital Affairs",
+    title: "Secretary · University Computer Centre & Digital Affairs",
     body: "Directing digital infrastructure for a 5,000-student university — server maintenance, deployments, and modernization of university-wide tooling.",
   },
   {
