@@ -1117,9 +1117,6 @@ function Footer() {
           <span className="text-sm text-foreground">
             Designed & Developed by Tanishttha Sehgal
           </span>
-          <span className="text-xs text-muted-foreground">
-            Built with React, TanStack Start, Tailwind CSS & Framer Motion.
-          </span>
         </div>
         <div className="flex items-center gap-4">
           {[
