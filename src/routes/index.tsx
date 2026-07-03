@@ -6,7 +6,6 @@ import {
   Github,
   Linkedin,
   Mail,
-  ArrowUpRight,
   Sparkles,
   Code2,
   Brain,
