@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type FormEvent } from "react";
+import emailjs from "@emailjs/browser";
 import { motion, useScroll, useSpring, useTransform, AnimatePresence } from "framer-motion";
 import {
   Github,
@@ -27,7 +28,7 @@ import {
   ExternalLink,
   Terminal,
 } from "lucide-react";
-import heroOrb from "@/assets/hero-orb.jpg";
+import heroAI from "@/assets/hero-ai.jpg";
 import profileImg from "@/assets/profile.jpg";
 
 export const Route = createFileRoute("/")({
@@ -188,7 +189,7 @@ function Navbar() {
             T
           </motion.div>
           <span className="font-display text-sm font-semibold tracking-wide">
-            Tanishttha
+            Tanishttha Sehgal
           </span>
         </a>
 
@@ -345,7 +346,7 @@ function Hero() {
             className="mt-14 grid grid-cols-3 gap-6 max-w-md"
           >
             {[
-              { k: "8.83", v: "CGPA / 10" },
+              { k: "8.82", v: "CGPA / 10" },
               { k: "3", v: "Deployed AI apps" },
               { k: "6+", v: "Awards & wins" },
             ].map((s) => (
@@ -371,8 +372,8 @@ function Hero() {
           <div className="absolute inset-0 rounded-full bg-gradient-brand opacity-40 blur-3xl" />
           <div className="animate-float relative h-full w-full">
             <img
-              src={heroOrb}
-              alt="Iridescent glass orb representing Tanishttha's creative work"
+              src={heroAI}
+              alt="AI neural network and developer laptop illustration representing Tanishttha Sehgal's work"
               width={1024}
               height={1024}
               className="h-full w-full object-contain drop-shadow-[0_0_60px_rgba(139,92,246,0.5)]"
@@ -509,7 +510,7 @@ function About() {
           <div className="relative h-full w-full overflow-hidden rounded-3xl border border-white/10">
             <img
               src={profileImg}
-              alt="Portrait of Tanishttha"
+              alt="Portrait of Tanishttha Sehgal"
               loading="lazy"
               width={768}
               height={960}
@@ -540,7 +541,7 @@ function About() {
               { icon: GraduationCap, k: "B.Tech CE", v: "JCBUST YMCA · 2027" },
               { icon: Trophy, k: "6+ Awards", v: "Tech, poetry & speech" },
               { icon: Briefcase, k: "Joint Secretary", v: "Univ. Computer Centre" },
-              { icon: Star, k: "8.83 CGPA", v: "Top of cohort" },
+              { icon: Star, k: "8.82 CGPA", v: "Top of cohort" },
             ].map((s, i) => (
               <motion.div
                 key={s.k}
@@ -636,24 +637,6 @@ const PROJECTS = [
     live: "https://autismbuddy.vercel.app",
   },
   {
-    title: "InvoiceGenie",
-    category: "Full Stack",
-    desc: "AI-powered invoice generation platform with polished templates, tax handling, and PDF export. Built for freelancers and small businesses shipping invoices in seconds.",
-    tags: ["React.js", "Node.js", "Tailwind", "PDF"],
-    gradient: "from-emerald-500/40 via-teal-500/30 to-cyan-500/30",
-    code: "https://github.com/Tanishttha/InvoiceGenie",
-    live: "https://invoice-genie-pro.vercel.app",
-  },
-  {
-    title: "Fake Job Posting Detection",
-    category: "Machine Learning",
-    desc: "Multi-class job fraud classifier trained on the EMSCAD dataset (17,880+ postings). TF-IDF + ensemble learning with SMOTE balancing, achieving 90%+ F1, served via a Flask inference API.",
-    tags: ["Scikit-learn", "TF-IDF", "Random Forest", "SMOTE", "Flask"],
-    gradient: "from-cyan-500/40 via-blue-500/30 to-indigo-500/30",
-    code: "https://github.com/Tanishttha/fake-job-detection",
-    live: "https://fake-jobdetect.vercel.app",
-  },
-  {
     title: "NavAssist",
     category: "AI",
     desc: "Voice-first navigation assistant for visually impaired users. Web Speech API + ML intent classification + Flask REST APIs, with Firebase auth and WCAG 2.1-compliant UX.",
@@ -663,22 +646,31 @@ const PROJECTS = [
     live: "https://navassist.vercel.app",
   },
   {
-    title: "MysterMaze",
+    title: "Fake Job Detection",
+    category: "Machine Learning",
+    desc: "Multi-class job fraud classifier trained on the EMSCAD dataset (17,880+ postings). TF-IDF + ensemble learning with SMOTE balancing, achieving 90%+ F1, served via a Flask inference API.",
+    tags: ["Scikit-learn", "TF-IDF", "Random Forest", "SMOTE", "Flask"],
+    gradient: "from-cyan-500/40 via-blue-500/30 to-indigo-500/30",
+    code: "https://github.com/Tanishttha/fake-job-detection",
+    live: "https://fake-jobdetect.vercel.app",
+  },
+  {
+    title: "Invoice Genie",
+    category: "Full Stack",
+    desc: "AI-powered invoice generation platform with polished templates, tax handling, and PDF export. Built for freelancers and small businesses shipping invoices in seconds.",
+    tags: ["React.js", "Node.js", "Tailwind", "PDF"],
+    gradient: "from-emerald-500/40 via-teal-500/30 to-cyan-500/30",
+    code: "https://github.com/Tanishttha/InvoiceGenie",
+    live: "https://invoice-genie-pro.vercel.app",
+  },
+  {
+    title: "Mystery Maze",
     category: "Full Stack",
     desc: "Interactive mystery-solving maze game with animated UI, layered puzzles, and a responsive React interface tuned for smooth gameplay across devices.",
     tags: ["React.js", "JavaScript", "Tailwind", "Framer Motion"],
     gradient: "from-fuchsia-500/40 via-purple-500/30 to-indigo-500/30",
     code: "https://github.com/Tanishttha/mystermaze",
     live: "https://mystermaze.vercel.app",
-  },
-  {
-    title: "Carpool YMCA",
-    category: "Full Stack",
-    desc: "Campus carpool platform connecting JCBUST students & staff — ride matching, route sharing, and driver/rider auth flows for a greener commute.",
-    tags: ["React.js", "Firebase", "Node.js", "Tailwind"],
-    gradient: "from-sky-500/40 via-blue-500/30 to-emerald-500/30",
-    code: "https://github.com/Tanishttha/Carpool",
-    live: "https://carpool-ymca.vercel.app",
   },
 ];
 
@@ -821,7 +813,7 @@ const TIMELINE = [
     icon: GraduationCap,
     date: "2023 — 2027",
     title: "B.Tech Computer Engineering · JCBUST YMCA",
-    body: "CGPA 8.83/10. Coursework in ML, Intelligent Systems, Computer Vision, Data Mining, Soft Computing, and DSA.",
+    body: "CGPA 8.82/10. Coursework in ML, Intelligent Systems, Computer Vision, Data Mining, Soft Computing, and DSA.",
   },
 ];
 
@@ -913,7 +905,7 @@ const TESTIMONIALS = [
     name: "Ananya R.",
     role: "CTO, Aurora Labs",
     quote:
-      "Tanishttha ships work that feels effortless yet is technically deep. Rare combination.",
+      "Tanishttha Sehgal ships work that feels effortless yet is technically deep. Rare combination.",
   },
   {
     name: "Marco V.",
