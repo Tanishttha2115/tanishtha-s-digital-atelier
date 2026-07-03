@@ -29,6 +29,7 @@ import {
 } from "lucide-react";
 import heroAI from "@/assets/hero-ai.jpg";
 import profileImg from "@/assets/profile.jpg";
+import CursorSpotlight from "@/components/CursorSpotlight";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -38,6 +39,7 @@ function Index() {
   return (
     <div className="relative min-h-screen bg-background text-foreground">
       <BackgroundFX />
+      <CursorSpotlight />
       <ScrollProgress />
       <Navbar />
       <main className="relative z-10">
@@ -221,7 +223,7 @@ function Navbar() {
           href="#contact"
           className="hidden items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-medium text-black transition-transform hover:scale-105 md:inline-flex"
         >
-          Let's talk <ArrowUpRight className="h-4 w-4" />
+          Let's talk
         </a>
 
         <button
@@ -742,7 +744,6 @@ function Projects() {
               <div className="p-6">
                 <div className="flex items-start justify-between gap-4">
                   <h3 className="font-display text-xl font-semibold">{p.title}</h3>
-                  <ArrowUpRight className="h-5 w-5 shrink-0 text-muted-foreground transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-foreground" />
                 </div>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                   {p.desc}
@@ -1042,7 +1043,6 @@ function Contact() {
                 </div>
                 <span className="text-sm">{c.label}</span>
               </div>
-              <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground" />
             </a>
           ))}
         </div>
@@ -1089,7 +1089,7 @@ function Contact() {
                 <>Sending…</>
               ) : (
                 <>
-                  Send message <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                  Send message
                 </>
               )}
             </button>
