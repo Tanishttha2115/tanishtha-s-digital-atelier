@@ -6,7 +6,6 @@ import {
   Github,
   Linkedin,
   Mail,
-  ArrowUpRight,
   Sparkles,
   Code2,
   Brain,
@@ -30,6 +29,7 @@ import {
 } from "lucide-react";
 import heroAI from "@/assets/hero-ai.jpg";
 import profileImg from "@/assets/profile.jpg";
+import CursorSpotlight from "@/components/CursorSpotlight";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -39,6 +39,7 @@ function Index() {
   return (
     <div className="relative min-h-screen bg-background text-foreground">
       <BackgroundFX />
+      <CursorSpotlight />
       <ScrollProgress />
       <Navbar />
       <main className="relative z-10">
@@ -222,7 +223,7 @@ function Navbar() {
           href="#contact"
           className="hidden items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-medium text-black transition-transform hover:scale-105 md:inline-flex"
         >
-          Let's talk <ArrowUpRight className="h-4 w-4" />
+          Let's talk
         </a>
 
         <button
@@ -531,7 +532,7 @@ function About() {
           </p>
           <p className="text-lg leading-relaxed text-muted-foreground">
             I care deeply about problem solving, clean architecture, and
-            interfaces with taste. Outside code, I serve as Joint Secretary of
+            interfaces with taste. Outside code, I serve as Secretary of
             the University Computer Centre and coordinate Training & Placement
             for the Computer Engineering department.
           </p>
@@ -540,7 +541,7 @@ function About() {
             {[
               { icon: GraduationCap, k: "B.Tech CE", v: "JCBUST YMCA · 2027" },
               { icon: Trophy, k: "6+ Awards", v: "Tech, poetry & speech" },
-              { icon: Briefcase, k: "Joint Secretary", v: "Univ. Computer Centre" },
+              { icon: Briefcase, k: "Secretary", v: "University Computer Centre" },
               { icon: Star, k: "8.82 CGPA", v: "Top of cohort" },
             ].map((s, i) => (
               <motion.div
@@ -743,7 +744,6 @@ function Projects() {
               <div className="p-6">
                 <div className="flex items-start justify-between gap-4">
                   <h3 className="font-display text-xl font-semibold">{p.title}</h3>
-                  <ArrowUpRight className="h-5 w-5 shrink-0 text-muted-foreground transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-foreground" />
                 </div>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                   {p.desc}
@@ -798,7 +798,7 @@ const TIMELINE = [
     kind: "Leadership",
     icon: Rocket,
     date: "Jul 2025 — Present",
-    title: "Joint Secretary · University Computer Centre & Digital Affairs",
+    title: "Secretary · University Computer Centre & Digital Affairs",
     body: "Directing digital infrastructure for a 5,000-student university — server maintenance, deployments, and modernization of university-wide tooling.",
   },
   {
@@ -1043,7 +1043,6 @@ function Contact() {
                 </div>
                 <span className="text-sm">{c.label}</span>
               </div>
-              <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground" />
             </a>
           ))}
         </div>
@@ -1090,7 +1089,7 @@ function Contact() {
                 <>Sending…</>
               ) : (
                 <>
-                  Send message <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                  Send message
                 </>
               )}
             </button>
@@ -1117,9 +1116,6 @@ function Footer() {
         <div className="flex flex-col gap-1 text-center sm:text-left">
           <span className="text-sm text-foreground">
             Designed & Developed by Tanishttha Sehgal
-          </span>
-          <span className="text-xs text-muted-foreground">
-            Built with React, TanStack Start, Tailwind CSS & Framer Motion.
           </span>
         </div>
         <div className="flex items-center gap-4">
