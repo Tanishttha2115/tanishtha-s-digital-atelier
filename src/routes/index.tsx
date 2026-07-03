@@ -984,11 +984,40 @@ function Testimonials() {
 
 /* ---------- Contact ---------- */
 function Contact() {
-  const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
-  const onSubmit = (e: FormEvent) => {
+  const formRef = useRef<HTMLFormElement>(null);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState<string>("");
+
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!formRef.current) return;
+
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID as string | undefined;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string | undefined;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string | undefined;
+
+    if (!serviceId || !templateId || !publicKey) {
+      setStatus("error");
+      setErrorMsg(
+        "Email service is not configured yet. Please email tanishtthasehgal@gmail.com directly.",
+      );
+      return;
+    }
+
     setStatus("sending");
-    setTimeout(() => setStatus("sent"), 900);
+    setErrorMsg("");
+    try {
+      await emailjs.sendForm(serviceId, templateId, formRef.current, {
+        publicKey,
+      });
+      setStatus("sent");
+      formRef.current.reset();
+      setTimeout(() => setStatus("idle"), 4000);
+    } catch (err) {
+      console.error("EmailJS error", err);
+      setStatus("error");
+      setErrorMsg("Something went wrong. Please try again or email me directly.");
+    }
   };
   return (
     <Section
@@ -999,7 +1028,7 @@ function Contact() {
       <div className="grid gap-10 md:grid-cols-[1fr_1.2fr]">
         <div className="space-y-4">
           {[
-            { icon: Mail, label: "tanishttha2115@gmail.com", href: "mailto:tanishttha2115@gmail.com" },
+            { icon: Mail, label: "tanishtthasehgal@gmail.com", href: "mailto:tanishtthasehgal@gmail.com" },
             { icon: Linkedin, label: "linkedin.com/in/tanishttha-sehgal", href: "https://linkedin.com/in/tanishttha-sehgal-73555b287" },
             { icon: Github, label: "github.com/Tanishttha", href: "https://github.com/Tanishttha" },
           ].map((c) => (
@@ -1019,17 +1048,20 @@ function Contact() {
           ))}
         </div>
 
-        <form onSubmit={onSubmit} className="rounded-3xl glass-strong p-8">
+        <form ref={formRef} onSubmit={onSubmit} className="rounded-3xl glass-strong p-8">
+          {/* Hidden field so EmailJS template can route to the correct inbox */}
+          <input type="hidden" name="to_email" value="tanishtthasehgal@gmail.com" />
           <div className="grid gap-5">
             {[
-              { name: "name", label: "Your name", type: "text" },
-              { name: "email", label: "Email", type: "email" },
+              { name: "from_name", label: "Your name", type: "text" },
+              { name: "reply_to", label: "Email", type: "email" },
             ].map((f) => (
               <label key={f.name} className="block">
                 <span className="mb-2 block text-xs uppercase tracking-widest text-muted-foreground">
                   {f.label}
                 </span>
                 <input
+                  name={f.name}
                   type={f.type}
                   required
                   className="w-full rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3 text-sm outline-none transition-all focus:border-[color:var(--glow-purple)] focus:bg-white/[0.05]"
@@ -1041,6 +1073,7 @@ function Contact() {
                 Tell me about your project
               </span>
               <textarea
+                name="message"
                 required
                 rows={5}
                 className="w-full resize-none rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3 text-sm outline-none transition-all focus:border-[color:var(--glow-purple)] focus:bg-white/[0.05]"
@@ -1048,7 +1081,7 @@ function Contact() {
             </label>
             <button
               type="submit"
-              disabled={status !== "idle"}
+              disabled={status === "sending"}
               className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-brand py-3.5 text-sm font-semibold text-black transition-transform hover:scale-[1.02] disabled:opacity-70"
             >
               {status === "sent" ? (
@@ -1061,6 +1094,14 @@ function Contact() {
                 </>
               )}
             </button>
+            {status === "sent" && (
+              <p className="text-center text-xs text-emerald-400">
+                Thanks — your message is on its way. I'll get back to you soon.
+              </p>
+            )}
+            {status === "error" && (
+              <p className="text-center text-xs text-rose-400">{errorMsg}</p>
+            )}
           </div>
         </form>
       </div>
@@ -1085,7 +1126,7 @@ function Footer() {
           {[
             { Icon: Github, href: "https://github.com/Tanishttha" },
             { Icon: Linkedin, href: "https://linkedin.com/in/tanishttha-sehgal-73555b287" },
-            { Icon: Mail, href: "mailto:tanishttha2115@gmail.com" },
+            { Icon: Mail, href: "mailto:tanishtthasehgal@gmail.com" },
           ].map(({ Icon, href }, i) => (
             <a
               key={i}
