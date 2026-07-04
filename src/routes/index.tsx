@@ -634,6 +634,7 @@ const PROJECTS = [
     desc: "End-to-end ASD detection & AI therapy platform. Real-time gaze and motor behavioral analysis via YOLOv8 + OpenCV, paired with a LLaMA 3 (Groq API) conversational therapy assistant.",
     tags: ["YOLOv8", "OpenCV", "LLaMA 3", "Flask", "React.js"],
     gradient: "from-purple-500/40 via-pink-500/30 to-cyan-500/30",
+    image: autiscanImg.url,
     code: "https://github.com/Tanishttha/AutiScan",
     live: "https://autismbuddy.vercel.app",
   },
@@ -643,6 +644,7 @@ const PROJECTS = [
     desc: "Voice-first navigation assistant for visually impaired users. Web Speech API + ML intent classification + Flask REST APIs, with Firebase auth and WCAG 2.1-compliant UX.",
     tags: ["Flask", "Firebase", "Web Speech API", "ML", "REST"],
     gradient: "from-amber-500/30 via-rose-500/30 to-purple-500/30",
+    image: navassistImg.url,
     code: "https://github.com/Tanishttha/NavAssist",
     live: "https://navassist.vercel.app",
   },
@@ -652,6 +654,7 @@ const PROJECTS = [
     desc: "Multi-class job fraud classifier trained on the EMSCAD dataset (17,880+ postings). TF-IDF + ensemble learning with SMOTE balancing, achieving 90%+ F1, served via a Flask inference API.",
     tags: ["Scikit-learn", "TF-IDF", "Random Forest", "SMOTE", "Flask"],
     gradient: "from-cyan-500/40 via-blue-500/30 to-indigo-500/30",
+    image: fakeJobImg.url,
     code: "https://github.com/Tanishttha/fake-job-detection",
     live: "https://fake-jobdetect.vercel.app",
   },
@@ -661,6 +664,7 @@ const PROJECTS = [
     desc: "AI-powered invoice generation platform with polished templates, tax handling, and PDF export. Built for freelancers and small businesses shipping invoices in seconds.",
     tags: ["React.js", "Node.js", "Tailwind", "PDF"],
     gradient: "from-emerald-500/40 via-teal-500/30 to-cyan-500/30",
+    image: invoiceGenieImg.url,
     code: "https://github.com/Tanishttha/InvoiceGenie",
     live: "https://invoice-genie-pro.vercel.app",
   },
@@ -670,6 +674,7 @@ const PROJECTS = [
     desc: "Interactive mystery-solving maze game with animated UI, layered puzzles, and a responsive React interface tuned for smooth gameplay across devices.",
     tags: ["React.js", "JavaScript", "Tailwind", "Framer Motion"],
     gradient: "from-fuchsia-500/40 via-purple-500/30 to-indigo-500/30",
+    image: mysteryMazeImg.url,
     code: "https://github.com/Tanishttha/mystermaze",
     live: "https://mystermaze.vercel.app",
   },
@@ -718,18 +723,13 @@ function Projects() {
             >
               <div className="pointer-events-none absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" style={{ background: "linear-gradient(135deg, rgba(139,92,246,0.15), rgba(6,182,212,0.15))" }} />
               <div className={`relative aspect-[16/10] overflow-hidden bg-gradient-to-br ${p.gradient}`}>
-                <div className="absolute inset-0 backdrop-blur-3xl" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <motion.div
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                    className="h-44 w-44 rounded-full border border-white/20 transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute h-24 w-24 rounded-full bg-gradient-brand opacity-70 blur-2xl" />
-                  <div className="absolute font-display text-5xl font-bold text-white/90 mix-blend-overlay tracking-tight">
-                    {p.title.split(" ")[0]}
-                  </div>
-                </div>
+                <img
+                  src={p.image}
+                  alt={`${p.title} preview`}
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
                 <div className="absolute left-4 top-4 flex gap-2">
                   <div className="rounded-full glass px-3 py-1 text-[10px] uppercase tracking-widest">
                     {p.category}
