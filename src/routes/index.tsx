@@ -788,18 +788,46 @@ function Projects() {
 /* ---------- Experience Timeline ---------- */
 const TIMELINE = [
   {
+    kind: "Internship",
+    icon: Briefcase,
+    date: "July 2026 — Present",
+    title: "Vision AI Intern",
+    company: "VaultStack AI",
+    bullets: [
+      "Working on Vision AI and computer vision applications.",
+      "Developing AI-powered features using deep learning and computer vision.",
+      "Collaborating with the team on real-world AI solutions.",
+      "Contributing to model development, testing, and deployment.",
+    ],
+    techStack: ["Python", "OpenCV", "PyTorch", "Deep Learning", "Computer Vision"],
+  },
+  {
     kind: "Leadership",
     icon: Briefcase,
-    date: "Sep 2025 — Present",
+    date: "September 2025 — Present",
     title: "Computer Dept. Coordinator · Training & Placement Cell (Udaan)",
     body: "Coordinating campus recruitment with 20+ industry partners and delivering DSA, ML, and web dev workshops for junior cohorts.",
   },
   {
     kind: "Leadership",
     icon: Rocket,
-    date: "Jul 2025 — Present",
+    date: "July 2025 — Present",
     title: "Secretary · University Computer Centre & Digital Affairs",
     body: "Directing digital infrastructure for a 5,000-student university — server maintenance, deployments, and modernization of university-wide tooling.",
+  },
+  {
+    kind: "Internship",
+    icon: Briefcase,
+    date: "January 2025 — February 2025",
+    title: "Full Stack Development Intern",
+    company: "Ideal Medical Solutions",
+    bullets: [
+      "Developed and enhanced an internal billing system.",
+      "Built GST-compliant invoicing and billing workflow features.",
+      "Implemented reporting modules and improved the user interface.",
+      "Collaborated with the team to deliver reliable and user-friendly solutions.",
+    ],
+    techStack: ["React.js", "TypeScript", "Firebase", "Firestore", "Tailwind CSS"],
   },
   {
     kind: "Recognition",
@@ -829,12 +857,12 @@ function Experience() {
         <div className="space-y-10">
           {TIMELINE.map((t, i) => (
             <motion.div
-              key={t.title}
+              key={t.title + t.date}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: i * 0.05 }}
-              className={`relative flex flex-col gap-6 md:flex-row md:items-center ${
+              className={`relative flex flex-col gap-6 md:flex-row md:items-start ${
                 i % 2 === 0 ? "md:flex-row-reverse" : ""
               }`}
             >
@@ -842,13 +870,45 @@ function Experience() {
                 <div className="h-3 w-3 rounded-full bg-gradient-brand animate-pulse-glow" />
               </div>
               <div className="md:w-1/2" />
-              <div className="glass ml-12 flex-1 rounded-2xl p-6 md:ml-0 md:w-1/2 md:mx-8">
+              <motion.div
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.3 }}
+                className="glass ml-12 flex-1 rounded-2xl p-6 md:ml-0 md:w-1/2 md:mx-8 transition-shadow duration-300 hover:shadow-[0_20px_60px_-20px_rgba(139,92,246,0.35)]"
+              >
                 <div className="mb-2 flex items-center gap-2 text-xs uppercase tracking-widest text-muted-foreground">
                   <t.icon className="h-3.5 w-3.5" /> {t.kind} · {t.date}
                 </div>
                 <h3 className="font-display text-lg font-semibold">{t.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{t.body}</p>
-              </div>
+                {t.company && (
+                  <div className="mt-1 text-sm font-medium text-[color:var(--glow-purple)]">
+                    {t.company}
+                  </div>
+                )}
+                {t.bullets ? (
+                  <ul className="mt-3 space-y-1.5">
+                    {t.bullets.map((b, idx) => (
+                      <li key={idx} className="flex items-start gap-2 text-sm text-muted-foreground">
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="mt-2 text-sm text-muted-foreground">{t.body}</p>
+                )}
+                {t.techStack && (
+                  <div className="mt-4 flex flex-wrap gap-1.5">
+                    {t.techStack.map((tech) => (
+                      <span
+                        key={tech}
+                        className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[10px] text-muted-foreground"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </motion.div>
             </motion.div>
           ))}
         </div>
