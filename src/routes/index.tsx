@@ -28,11 +28,11 @@ import {
   Terminal,
 } from "lucide-react";
 import heroAI from "@/assets/hero-ai.jpg";
-import autiscanImg from "@/assets/autiscan.png.asset.json";
-import navassistImg from "@/assets/navassist.png.asset.json";
-import fakeJobImg from "@/assets/fake-job.png.asset.json";
-import invoiceGenieImg from "@/assets/invoice-genie.png.asset.json";
-import mysteryMazeImg from "@/assets/mystery-maze.png.asset.json";
+import autiscanImg from "@/assets/autiscan.png";
+import navassistImg from "@/assets/navassist.png";
+import fakeJobImg from "@/assets/fake-job.png";
+import invoiceGenieImg from "@/assets/invoice-genie.png";
+import mysteryMazeImg from "@/assets/mystery-maze.png";
 import profileImg from "@/assets/profile.jpg";
 import CursorSpotlight from "@/components/CursorSpotlight";
 
