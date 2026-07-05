@@ -6,6 +6,7 @@ import {
   Github,
   Linkedin,
   Mail,
+  Phone,
   Sparkles,
   Code2,
   Brain,
@@ -1094,6 +1095,7 @@ function Contact() {
         <div className="space-y-4">
           {[
             { icon: Mail, label: "tanishtthasehgal@gmail.com", href: "mailto:tanishtthasehgal@gmail.com" },
+            { icon: Phone, label: "+91 9911163987", href: "tel:+919911163987" },
             { icon: Linkedin, label: "linkedin.com/in/tanishttha-sehgal", href: "https://linkedin.com/in/tanishttha-sehgal-73555b287" },
             { icon: Github, label: "github.com/Tanishttha", href: "https://github.com/Tanishttha" },
           ].map((c) => (
